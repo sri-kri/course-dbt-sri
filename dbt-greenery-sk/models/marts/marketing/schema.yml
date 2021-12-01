@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: fct_user_orders_activity
+    description: "User order activity detail with summary of all orders"
+    columns:
+        - name: user_id
+          description: "This is the unique user id for the table"
+          tests:
+              - unique 
+              - not_null

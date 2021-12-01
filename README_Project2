@@ -1,0 +1,39 @@
+What is our user repeat rate?
+
+with data as 
+(Select 
+    user_id, count(1) as num_orders
+    from dbt_sk.stg_users
+    LEFT JOIN dbt_sk.stg_orders using (user_id)
+    group by 1 
+)
+
+Select 
+    sum(case when num_orders >1 then 1 else 0 end) as sum_users_2more_orders,
+    count(1) as total_users,
+    (sum(case when num_orders >1 then 1 else 0 end)::float / count(1)) *100 as pct_users_2more_orders
+from data;
+
+a: 79%
+
+What are good indicators of a user who will likely purchase again? What about indicators of users who are likely NOT to purchase again? If you had more data, what features would you want to look into to answer this question?
+
+a: Good indicators include session/browsing history for the user. A user that has more session activity would most likely purchase again vs someone who doesn't have as much browsing activity. In addition, data about items in user's carts that have not bene purchases will be a good indicator of future purchases/conversions.
+
+More stakeholders are coming to us for data, which is great! But we need to get some more models created before we can help. Create a marts folder, so we can organize our models, with the following subfolders for business units:
+
+Core
+a: done 
+
+Marketing
+a: done 
+
+Product
+a: done 
+
+Organized high level summary views per functional area with key data elements that are appropriate for those functions. Data that is appropriate for cross functional groups will be stored in the core mart
+
+Paste in an image of your DAG from the docs
+a: can't figure out how to paste the DAG here but it's in the docs page! 
+
+

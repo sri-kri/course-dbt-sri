@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: dim_users
+    description: "Users dimension table"
+    columns:
+        - name: user_id
+          description: "This is the unique user id for the table"
+          tests:
+              - unique 
+              - not_null
+  - name: dim_products
+    description: "Products dimension table"
+  - name: fct_orders
+    description: "Orders fact table"
+  - name: fct_user_orders
+    description: "Users orders fact table"

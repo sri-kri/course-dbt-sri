@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: fct_page_views
+    description: "Count of page views"
+    columns:
+        - name: page_url
+          description: "tests for page url records"
+          tests:
+              - unique 
+              - not_null
