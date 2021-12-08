@@ -35,4 +35,8 @@ models:
   my_new_project:
     # Config indicated by + and applies to all files under models/example/
     example:
-      +materialized: view
+        +materialized: view
+
+          
+on-run-end:
+  - "GRANT USAGE ON SCHEMA {{schema}} TO reporting"
